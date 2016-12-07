@@ -42,9 +42,17 @@ namespace BMSZ
                 return;
             }
 
+            if (alter == true)
+            {
+                Alter();
+            }
+            else
+            {
+                Add();
+            }
+
             //检查编号是否有误
             string sql = string.Format("select HBFL from DM_BB_LX where HBFL='{0}'",textBox1.Text.Trim());
-
 
             //更新或插入数据
             string sql1 = "";
@@ -101,6 +109,10 @@ namespace BMSZ
                 textBox1.Text = HBFL;
                 textBox2.Text = MC;
                 this.Text = "修改类别";
+            }
+            else
+            {
+                this.Text = "新增类别";
             }
         }
     }

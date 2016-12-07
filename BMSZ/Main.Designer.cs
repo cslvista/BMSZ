@@ -114,9 +114,9 @@
             this.toolStripButton3,
             this.toolStripSeparator3,
             this.toolStripButton4});
-            this.toolStrip1.Location = new System.Drawing.Point(2, 17);
+            this.toolStrip1.Location = new System.Drawing.Point(16, 17);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(206, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(245, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -143,6 +143,7 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(43, 24);
             this.toolStripButton2.Text = "修改";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripSeparator2
             // 

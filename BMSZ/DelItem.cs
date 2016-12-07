@@ -28,7 +28,28 @@ namespace BMSZ
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            string sql1 = string.Format("delete from DM_BB where");
+
+            string sql = string.Format("select BB_ID from M_BB_SF where BB_ID='{0}'",BB_ID);
+
+            DataTable isExists = new DataTable();
+
+            try
+            {
+                isExists=GlobalHelper.IDBHelper.ExecuteDataTable(GlobalHelper.GloValue.ZYDB, sql);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            if (isExists.Rows.Count>0)
+            {
+                MessageBox.Show("该项不可删除！");
+                return;
+            }
+
+            string sql1 = string.Format("delete from DM_BB where  BB_ID='{0}'", BB_ID);
 
             try
             {
@@ -45,8 +66,9 @@ namespace BMSZ
 
         private void DelItem_Load(object sender, EventArgs e)
         {
-            label1.Text = "标本编号：" + BB_ID;
-            label2.Text= "标本名称：" + MC;
+            label1.Text = "标本编号： " + BB_ID;
+            label2.Text= "标本名称： " + BB_MC;
         }
+
     }
 }

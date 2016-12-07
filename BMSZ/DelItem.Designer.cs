@@ -41,7 +41,7 @@
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton1.Appearance.Options.UseFont = true;
             this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(108, 118);
+            this.simpleButton1.Location = new System.Drawing.Point(106, 121);
             this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(78, 32);
@@ -53,7 +53,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(16, 62);
+            this.label2.Location = new System.Drawing.Point(16, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 23);
             this.label2.TabIndex = 22;
@@ -63,7 +63,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(16, 25);
+            this.label1.Location = new System.Drawing.Point(16, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 23);
             this.label1.TabIndex = 24;
@@ -87,6 +87,7 @@
             this.ClientSize = new System.Drawing.Size(299, 163);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.simpleButton1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DelItem";

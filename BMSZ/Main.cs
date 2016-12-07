@@ -77,7 +77,7 @@ namespace BMSZ
 
             try
             {
-                string sql = string.Format("select b.MC,a.BB_ID,a.BB_MC,a.ShuoMing from DM_BB a inner join DM_BB_LX b on a.HBFL=b.HBFL where a.HBFL='{0}'", HBFL.ToString());
+                string sql = string.Format("select a.HBFL,b.MC,a.BB_ID,a.BB_MC,a.ShuoMing from DM_BB a inner join DM_BB_LX b on a.HBFL=b.HBFL where a.HBFL='{0}'", HBFL.ToString());
                 DM_BB = GlobalHelper.IDBHelper.ExecuteDataTable(GlobalHelper.GloValue.ZYDB, sql);
                 gridControl2.DataSource = DM_BB;
             }
@@ -108,7 +108,7 @@ namespace BMSZ
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-
+            searchDM_BB_LX();
         }
 
         private void gridControl2_DoubleClick(object sender, EventArgs e)
@@ -136,6 +136,9 @@ namespace BMSZ
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
             DelItem form = new DelItem();
+            form.HBFL = gridView2.GetFocusedRowCellValue("HBFL").ToString();
+            form.BB_ID = gridView2.GetFocusedRowCellValue("BB_ID").ToString();
+            form.BB_MC = gridView2.GetFocusedRowCellValue("BB_MC").ToString();
             form.Show(this);
         }
 
@@ -159,6 +162,15 @@ namespace BMSZ
                 MessageBox.Show("错误:" + ex.Message);
                 return;
             }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Add_Alter_Class form = new Add_Alter_Class();
+            form.HBFL= gridView1.GetFocusedRowCellValue("HBFL").ToString();
+            form.MC= gridView1.GetFocusedRowCellValue("MC").ToString();
+            form.alter = true;
+            form.Show(this);
         }
     }
 }
