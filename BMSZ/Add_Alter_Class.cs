@@ -51,32 +51,41 @@ namespace BMSZ
                 Add();
             }
 
-            //检查编号是否有误
-            string sql = string.Format("select HBFL from DM_BB_LX where HBFL='{0}'",textBox1.Text.Trim());
-
-            //更新或插入数据
-            string sql1 = "";
-
-            if (alter == true)
-            {
-                sql1 = string.Format("update DM_BB_LX set MC='{0}' where HBFL='{1}'", textBox2.Text.Trim(), textBox1.Text.Trim());
-            }
-            else
-            {
-               
-            }
-
+            //更新主界面
+            Main form = (Main)this.Owner;
+            form.searchDM_BB_LX();
+            this.Close();
 
         }
 
         private void Add()
         {
+
+            //检查编号是否有误
+            string sql = string.Format("select HBFL from DM_BB_LX where HBFL='{0}'", textBox1.Text.Trim());
+
+            DataTable isExist = new DataTable();
+            try
+            {
+                isExist=GlobalHelper.IDBHelper.ExecuteDataTable(GlobalHelper.GloValue.ZYDB, sql);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            if (isExist.Rows.Count > 0)
+            {
+                MessageBox.Show("该编号已存在！");
+                return;
+            }
+
             string sql1 = string.Format("insert into DM_BB_LX (HBFL,MC) values ('{0}','{1}')", textBox1.Text.Trim(), textBox2.Text.Trim());
 
             try
             {
                 GlobalHelper.IDBHelper.ExecuteNonQuery(GlobalHelper.GloValue.ZYDB, sql1);
-                this.Close();
             }
             catch (Exception ex)
             {
@@ -88,12 +97,11 @@ namespace BMSZ
         private void Alter()
         {
             //更新或插入数据
-            string sql1 = "";
+            string sql =string.Format("update DM_BB_LX set MC='{0}' where HBFL='{1}'",textBox2.Text.Trim(), HBFL);
 
             try
             {
-                GlobalHelper.IDBHelper.ExecuteNonQuery(GlobalHelper.GloValue.ZYDB, sql1);
-                this.Close();
+                GlobalHelper.IDBHelper.ExecuteNonQuery(GlobalHelper.GloValue.ZYDB, sql);
             }
             catch (Exception ex)
             {
@@ -107,6 +115,7 @@ namespace BMSZ
             if (alter == true)
             {
                 textBox1.Text = HBFL;
+                textBox1.ReadOnly = true;
                 textBox2.Text = MC;
                 this.Text = "修改类别";
             }

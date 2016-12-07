@@ -44,7 +44,7 @@
             this.simpleButton1.Location = new System.Drawing.Point(106, 121);
             this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(78, 32);
+            this.simpleButton1.Size = new System.Drawing.Size(76, 30);
             this.simpleButton1.TabIndex = 15;
             this.simpleButton1.Text = "删除";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);

@@ -26,13 +26,6 @@ namespace BMSZ
         {
             searchControl1.Properties.NullValuePrompt = " ";
 
-            DM_BB_LX.Columns.Add("HBFL", typeof(string));
-            DM_BB_LX.Columns.Add("MC", typeof(string));
-
-            DM_BB.Columns.Add("BB_ID", typeof(string));
-            DM_BB.Columns.Add("BB_MC", typeof(string));
-            DM_BB.Columns.Add("ShuoMing", typeof(string));
-
             searchDM_BB_LX();
 
         }
@@ -100,10 +93,12 @@ namespace BMSZ
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            Add_Alter_Item form = new Add_Alter_Item();
-            form.HBFL = gridView2.GetFocusedRowCellValue("MC").ToString();
-            form.MC = gridView2.GetFocusedRowCellValue("MC").ToString();
-            form.Show(this);
+            //if (gridView1.GetFocusedRowCellValue("HBFL").ToString())
+            //Add_Alter_Item form = new Add_Alter_Item();
+            //form.HBFL = gridView2.GetFocusedRowCellValue("HBFL").ToString();
+            //form.MC = gridView2.GetFocusedRowCellValue("MC").ToString();
+            //form.Show(this);
+           
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -113,33 +108,44 @@ namespace BMSZ
 
         private void gridControl2_DoubleClick(object sender, EventArgs e)
         {
-            Add_Alter_Item form = new Add_Alter_Item();
-            form.HBFL = HBFL.ToString();
-            form.BB_MC = gridView2.GetFocusedRowCellValue("BB_MC").ToString();
-            form.ShuoMing= gridView2.GetFocusedRowCellValue("ShuoMing").ToString();
-            form.alter = true;
-            form.Show(this);
+            ButtonAlter_Click(null, null);
         }
 
         private void ButtonAlter_Click(object sender, EventArgs e)
         {
-            Add_Alter_Item form = new Add_Alter_Item();
-            form.HBFL = gridView2.GetFocusedRowCellValue("HBFL").ToString();
-            form.MC= gridView2.GetFocusedRowCellValue("MC").ToString();
-            form.BB_ID= gridView2.GetFocusedRowCellValue("BB_ID").ToString();
-            form.BB_MC = gridView2.GetFocusedRowCellValue("BB_MC").ToString();
-            form.ShuoMing = gridView2.GetFocusedRowCellValue("ShuoMing").ToString();
-            form.alter = true;
-            form.Show(this);
+            try
+            {
+                Add_Alter_Item form = new Add_Alter_Item();
+                form.HBFL = gridView2.GetFocusedRowCellValue("HBFL").ToString();
+                form.MC = gridView2.GetFocusedRowCellValue("MC").ToString();
+                form.BB_ID = gridView2.GetFocusedRowCellValue("BB_ID").ToString();
+                form.BB_MC = gridView2.GetFocusedRowCellValue("BB_MC").ToString();
+                form.ShuoMing = gridView2.GetFocusedRowCellValue("ShuoMing").ToString();
+                form.alter = true;
+                form.Show(this);
+            }
+            catch
+            {
+
+            }
+
+            
         }
 
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
-            DelItem form = new DelItem();
-            form.HBFL = gridView2.GetFocusedRowCellValue("HBFL").ToString();
-            form.BB_ID = gridView2.GetFocusedRowCellValue("BB_ID").ToString();
-            form.BB_MC = gridView2.GetFocusedRowCellValue("BB_MC").ToString();
-            form.Show(this);
+            try
+            {
+                DelItem form = new DelItem();
+                form.HBFL = gridView2.GetFocusedRowCellValue("HBFL").ToString();
+                form.BB_ID = gridView2.GetFocusedRowCellValue("BB_ID").ToString();
+                form.BB_MC = gridView2.GetFocusedRowCellValue("BB_MC").ToString();
+                form.Show(this);
+            }catch
+            {
+
+            }
+
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -166,11 +172,35 @@ namespace BMSZ
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            Add_Alter_Class form = new Add_Alter_Class();
-            form.HBFL= gridView1.GetFocusedRowCellValue("HBFL").ToString();
-            form.MC= gridView1.GetFocusedRowCellValue("MC").ToString();
-            form.alter = true;
-            form.Show(this);
+            try
+            {
+                Add_Alter_Class form = new Add_Alter_Class();
+                form.HBFL = gridView1.GetFocusedRowCellValue("HBFL").ToString();
+                form.MC = gridView1.GetFocusedRowCellValue("MC").ToString();
+                form.alter = true;
+                form.Show(this);
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DelClass form = new DelClass();
+                form.HBFL = gridView1.GetFocusedRowCellValue("HBFL").ToString();
+                form.MC = gridView1.GetFocusedRowCellValue("MC").ToString();
+                form.Show(this);
+            }
+            catch
+            {
+
+            }
+
         }
     }
 }
