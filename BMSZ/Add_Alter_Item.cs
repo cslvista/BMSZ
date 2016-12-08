@@ -17,6 +17,7 @@ namespace BMSZ
         public string BB_ID = "";
         public string BB_MC = "";
         public string ShuoMing = "";
+        bool success = false;
         public bool alter = false;
         public Add_Alter_Item()
         {
@@ -38,16 +39,25 @@ namespace BMSZ
 
             if (alter == true)
             {
-                Alter();
+               success=Alter();
             }
             else
             {
-                Add();
+               success = Add();
             }
-                
+
+            //更新主界面
+            if (success == true)
+            {
+                Main form = (Main)this.Owner;
+                form.gridControl1_Click(null, null);
+                this.Close();
+            }
+            
+
         }
 
-        private void Add()
+        private bool Add()
         {
             try
             {
@@ -56,10 +66,10 @@ namespace BMSZ
             catch 
             {
                 MessageBox.Show("标本编号必须为数字！");
-                return;
+                return false;
             }
 
-            string sql = "select BB_ID from DM_BB";
+            string sql =string.Format( "select BB_ID from DM_BB where BB_ID='{0}'", textBox2.Text.Trim());
 
             DataTable isExists = new DataTable();
 
@@ -70,31 +80,31 @@ namespace BMSZ
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
+                return false;
             }
 
             if (isExists.Rows.Count > 0)
             {
-                MessageBox.Show("");
-                return;
+                MessageBox.Show("该编号已经存在，请换另一个编号！");
+                return false;
             }
 
 
-            string sql1 = string.Format("insert into DM_BB (BB_ID,BB_MC,ShuoMing,HBFL) values ('{0}','{1}','{2}','{3}')", HBFL, textBox3.Text.Trim(), textBox4.Text.Trim());
+            string sql1 = string.Format("insert into DM_BB (BB_ID,BB_MC,ShuoMing,HBFL) values ('{0}','{1}','{2}','{3}')", textBox2.Text.Trim(), textBox3.Text.Trim(), textBox4.Text.Trim(),HBFL);
 
             try
             {
                 GlobalHelper.IDBHelper.ExecuteNonQuery(GlobalHelper.GloValue.ZYDB, sql1);
-                this.Close();
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
+                return false;
             }
         }
 
-        private void Alter()
+        private bool Alter()
         {
 
             string sql = string.Format("update DM_BB set BB_MC='{0}',ShuoMing='{1}' where BB_ID='{2}' and HBFL='{3}'", textBox3.Text.Trim(), textBox4.Text.Trim(), BB_ID, HBFL);
@@ -102,12 +112,12 @@ namespace BMSZ
             try
             {
                 GlobalHelper.IDBHelper.ExecuteNonQuery(GlobalHelper.GloValue.ZYDB, sql);
-                this.Close();
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
+                return false;
             }
         }
 
@@ -121,6 +131,7 @@ namespace BMSZ
                 textBox2.Text = BB_ID;
                 textBox2.ReadOnly = true;
                 textBox3.Text = BB_MC;
+                textBox4.Text = ShuoMing;
             }
             else
             {

@@ -51,7 +51,7 @@ namespace BMSZ
 
         }
 
-        private void gridControl1_Click(object sender, EventArgs e)
+        public void gridControl1_Click(object sender, EventArgs e)
         {
             HBFL.Clear();
             MC.Clear();
@@ -93,12 +93,19 @@ namespace BMSZ
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            //if (gridView1.GetFocusedRowCellValue("HBFL").ToString())
-            //Add_Alter_Item form = new Add_Alter_Item();
-            //form.HBFL = gridView2.GetFocusedRowCellValue("HBFL").ToString();
-            //form.MC = gridView2.GetFocusedRowCellValue("MC").ToString();
-            //form.Show(this);
-           
+            if (HBFL.ToString() != "")
+            {
+                Add_Alter_Item form = new Add_Alter_Item();
+                form.HBFL = HBFL.ToString();
+                form.MC = MC.ToString();
+                form.Show(this);
+            }
+            else
+            {
+                MessageBox.Show("请先点击左栏相应的类别再添加标本！");
+            }
+
+
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)

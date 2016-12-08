@@ -54,13 +54,18 @@ namespace BMSZ
             try
             {
                 GlobalHelper.IDBHelper.ExecuteNonQuery(GlobalHelper.GloValue.ZYDB, sql1);
-                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return;
             }
+
+
+            //更新主界面
+            Main form = (Main)this.Owner;
+            form.gridControl1_Click(null, null);
+            this.Close();
 
         }
 

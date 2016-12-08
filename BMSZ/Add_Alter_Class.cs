@@ -14,6 +14,7 @@ namespace BMSZ
         public string HBFL = "";
         public string MC = "";
         public bool alter = false;
+        bool success = false;
         public Add_Alter_Class()
         {
             InitializeComponent();
@@ -44,21 +45,25 @@ namespace BMSZ
 
             if (alter == true)
             {
-                Alter();
+                success=Alter();
             }
             else
             {
-                Add();
+                success = Add();
             }
 
             //更新主界面
-            Main form = (Main)this.Owner;
-            form.searchDM_BB_LX();
-            this.Close();
+            if (success == true)
+            {
+                Main form = (Main)this.Owner;
+                form.searchDM_BB_LX();
+                this.Close();
+            }
+            
 
         }
 
-        private void Add()
+        private bool Add()
         {
 
             //检查编号是否有误
@@ -72,13 +77,13 @@ namespace BMSZ
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
+                return false;
             }
 
             if (isExist.Rows.Count > 0)
             {
-                MessageBox.Show("该编号已存在！");
-                return;
+                MessageBox.Show("该编号已存在，请更换其他编号！");
+                return false;
             }
 
             string sql1 = string.Format("insert into DM_BB_LX (HBFL,MC) values ('{0}','{1}')", textBox1.Text.Trim(), textBox2.Text.Trim());
@@ -86,15 +91,16 @@ namespace BMSZ
             try
             {
                 GlobalHelper.IDBHelper.ExecuteNonQuery(GlobalHelper.GloValue.ZYDB, sql1);
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
+                return false;
             }
         }
         
-        private void Alter()
+        private bool Alter()
         {
             //更新或插入数据
             string sql =string.Format("update DM_BB_LX set MC='{0}' where HBFL='{1}'",textBox2.Text.Trim(), HBFL);
@@ -102,11 +108,12 @@ namespace BMSZ
             try
             {
                 GlobalHelper.IDBHelper.ExecuteNonQuery(GlobalHelper.GloValue.ZYDB, sql);
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
+                return false;
             }
         }
 

@@ -50,8 +50,8 @@ namespace Test
         {
             textBox1.Text = "MZSYS";
             textBox3.Text = "111111";
-            textBox2.Text = "1000";
-            textBox4.Text = "540";
+            textBox2.Text = "800";
+            textBox4.Text = "500";
 
             button1_Click(null, null);
             
