@@ -89,7 +89,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(674, 508);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(685, 508);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl2
@@ -114,7 +114,7 @@
             this.toolStripButton3,
             this.toolStripSeparator3,
             this.toolStripButton4});
-            this.toolStrip1.Location = new System.Drawing.Point(2, 14);
+            this.toolStrip1.Location = new System.Drawing.Point(2, 12);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(178, 25);
             this.toolStrip1.TabIndex = 0;
@@ -234,7 +234,7 @@
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Margin = new System.Windows.Forms.Padding(2);
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(470, 456);
+            this.gridControl2.Size = new System.Drawing.Size(481, 456);
             this.gridControl2.TabIndex = 1;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -322,7 +322,7 @@
             this.panelControl1.Location = new System.Drawing.Point(202, 2);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(2);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(470, 44);
+            this.panelControl1.Size = new System.Drawing.Size(481, 44);
             this.panelControl1.TabIndex = 2;
             // 
             // simpleButton2
@@ -364,7 +364,7 @@
             new DevExpress.XtraEditors.Repository.SearchButton()});
             this.searchControl1.Properties.FindDelay = 100;
             this.searchControl1.Properties.NullValuePrompt = "E";
-            this.searchControl1.Size = new System.Drawing.Size(124, 24);
+            this.searchControl1.Size = new System.Drawing.Size(139, 24);
             this.searchControl1.TabIndex = 11;
             this.searchControl1.TextChanged += new System.EventHandler(this.searchControl1_TextChanged);
             // 
@@ -423,7 +423,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 508);
+            this.ClientSize = new System.Drawing.Size(685, 508);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main";

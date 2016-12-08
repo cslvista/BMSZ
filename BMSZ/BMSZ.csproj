@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowBMSZ.cs" />
     <EmbeddedResource Include="Add_Alter_Class.resx">
       <DependentUpon>Add_Alter_Class.cs</DependentUpon>
     </EmbeddedResource>
