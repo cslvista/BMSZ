@@ -11,6 +11,7 @@ using AutoLogin;
 using System.Threading;
 using System.Runtime.InteropServices;
 using BMSZ;
+using ZYBR;
 
 
 namespace Test
@@ -50,10 +51,8 @@ namespace Test
         {
             textBox1.Text = "MZSYS";
             textBox3.Text = "111111";
-            textBox2.Text = "800";
-            textBox4.Text = "500";
-
-            button1_Click(null, null);
+            textBox2.Text = "1000";
+            textBox4.Text = "540";
             
         }
 
@@ -61,8 +60,28 @@ namespace Test
         {
             GlobalHelper.UserHelper.UserLog();
 
-            BMSZ.Main frm = new BMSZ.Main();
-            frm.Show();
+            ZYBR.Form1 form = new ZYBR.Form1();
+            form.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Func<bool> method = GlobalHelper.UserHelper.UserLog;
+            method.BeginInvoke(null, null);
+
+            IntPtr ParenthWnd = new IntPtr(0);
+            AutoLogin.AutoLogin AL = new AutoLogin.AutoLogin();
+            if (AL.autoLogin(textBox1.Text, textBox3.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox4.Text), "") == true)
+            {
+                Thread.Sleep(50);
+                ParenthWnd = FindWindow(null, "用户登录");
+                if (ParenthWnd.Equals(IntPtr.Zero))
+                {
+                    ZYBR.Form1 form = new ZYBR.Form1();
+                    form.Show();
+
+                }
+            }
         }
     }
 }
