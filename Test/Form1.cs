@@ -60,7 +60,7 @@ namespace Test
         {
             GlobalHelper.UserHelper.UserLog();
 
-            ZYBR.Form1 form = new ZYBR.Form1();
+            ZYBR.ZYHZ form = new ZYBR.ZYHZ();
             form.Show();
         }
 
@@ -77,7 +77,7 @@ namespace Test
                 ParenthWnd = FindWindow(null, "用户登录");
                 if (ParenthWnd.Equals(IntPtr.Zero))
                 {
-                    ZYBR.Form1 form = new ZYBR.Form1();
+                    ZYBR.ZYHZ form = new ZYBR.ZYHZ();
                     form.Show();
 
                 }

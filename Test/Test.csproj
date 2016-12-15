@@ -98,9 +98,9 @@
       <Project>{4b004b5a-11ee-4cc2-a659-2097f7f3970f}</Project>
       <Name>BMSZ</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ZYBR\ZYBR.csproj">
+    <ProjectReference Include="..\ZYBR\在院患者.csproj">
       <Project>{c78ab451-2117-49c6-a740-d20c2a86e3e5}</Project>
-      <Name>ZYBR</Name>
+      <Name>在院患者</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

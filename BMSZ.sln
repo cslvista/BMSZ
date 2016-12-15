@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMSZ", "BMSZ\BMSZ.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{CBABF51E-E721-488C-AF66-C971C0AF675A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZYBR", "ZYBR\ZYBR.csproj", "{C78AB451-2117-49C6-A740-D20C2A86E3E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "在院患者", "ZYBR\在院患者.csproj", "{C78AB451-2117-49C6-A740-D20C2A86E3E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -10,20 +10,20 @@ using System.Windows.Forms;
 
 namespace ZYBR
 {
-    public partial class Form1 : Form
+    public partial class ZYHZ : Form
     {
         DataTable ZYBR = new DataTable(); //在院病人
-        public Form1()
+        public ZYHZ()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Text = string.Format("在院病人一览（{0}）", GlobalHelper.UserHelper.UT_TITLE);
+            this.Text = string.Format("在院患者一览（{0}）", GlobalHelper.UserHelper.UT_TITLE);
 
-            string sql = string.Format("select a.HZXM,a.XINGBIE,a.CSRQ,a.RYCHMC,a.RYSJ,b.RYZDNR from T_ZYDJ a" 
-                                        + " inner join (select ZYID,[RYZDNR]=stuff((select [RYZDNR]+' ； ' from T_RYZD where ZYID=c.ZYID for xml path('')), 1, 1, '') from T_RYZD c group by ZYID) b on a.ZYID=b.ZYID"
+            string sql = string.Format("select a.HZXM,a.XINGBIE,a.CSRQ,a.CHMC,a.RYSJ,b.RYZDNR from T_ZYDJ a" 
+                                        + " inner join (select ZYID,[RYZDNR]=stuff((select [RYZDNR]+' ； ' from T_RYZD where ZYID=c.ZYID for xml path('')), 1, 0, '') from T_RYZD c group by ZYID) b on a.ZYID=b.ZYID"
                                         + " where a.ZYZT = '1' and a.RYKBID = '{0}'", GlobalHelper.UserHelper.UT_ID);
 
             try
@@ -38,6 +38,18 @@ namespace ZYBR
                 return;
             }
 
+        }
+
+        private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetDataObject(gridView1.GetFocusedDisplayText());
+            }
+            catch
+            {
+
+            }
         }
     }
 }
